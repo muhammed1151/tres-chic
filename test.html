@@ -1,1 +1,69 @@
 
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clickable Product Image to WhatsApp</title>
+  </head>
+  <body>
+    <!-- Product 1 -->
+    <div
+      class="product"
+      data-name="Product 1"
+      data-price="100$"
+      data-description="This is the first product description"
+      data-img="../myWork/3.png"
+      onclick="sendToWhatsApp(this)"
+    >
+      <img
+        src="https://example.com/product1.jpg"
+        alt="Product 1"
+        style="width: 200px; height: auto"
+      />
+    </div>
+
+    <!-- Product 2 -->
+    <div
+      class="product"
+      data-name="Product 2"
+      data-price="200$"
+      data-description="This is the second product description"
+      data-img="../myWork/3.png"
+      onclick="sendToWhatsApp(this)"
+    >
+      <img
+        src="../myWork/3.png"
+        alt="Product 2"
+        style="width: 200px; height: auto"
+      />
+    </div>
+
+    <script>
+      function sendToWhatsApp(productElement) {
+        // Fetch product data from data attributes
+        const productName = productElement.getAttribute("data-name");
+        const productPrice = productElement.getAttribute("data-price");
+        const productDescription =
+          productElement.getAttribute("data-description");
+        const productImg = productElement.getAttribute("data-img"); // URL of the product image
+
+        // Build the message text
+        const message =
+          `Product Name: ${productName}%0A` +
+          `Price: ${productPrice}%0A` +
+          `Description: ${productDescription}%0A` +
+          `Product Image: ${productImg}`;
+
+        // WhatsApp number in international format
+        const phone = "01004026540";
+
+        // Create the WhatsApp link with the message
+        const whatsappLink = `https://wa.me/${phone}?text=${message}`;
+
+        // Open the WhatsApp link in a new tab
+        window.open(whatsappLink, "_blank");
+      }
+    </script>
+  </body>
+</html>
